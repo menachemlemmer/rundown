@@ -12,4 +12,8 @@ router.get("/:runId", runCtrl.show);
 
 router.delete("/:runId", runCtrl.delete);
 
+router.get("/:runId/edit", runCtrl.edit);
+
+router.put("/:runId", runCtrl.update);
+
 module.exports = router;

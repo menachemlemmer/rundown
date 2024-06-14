@@ -51,10 +51,37 @@ async function deleteRun(req, res) {
   }
 }
 
+async function edit(req, res) {
+  try {
+    const currentUser = await User.findById(req.session.user._id);
+    const run = currentUser.runs.id(req.params.runId);
+    const date = run.date.toISOString().slice(0, -1);
+    res.render("runs/edit.ejs", { run, date });
+  } catch (error) {
+    console.log(error);
+    res.redirect("/");
+  }
+}
+
+async function update(req, res) {
+  try {
+    const currentUser = await User.findById(req.session.user._id);
+    const run = currentUser.runs.id(req.params.runId);
+    run.set(req.body);
+    await currentUser.save();
+    res.redirect("/runs");
+  } catch (error) {
+    console.log(error);
+    res.redirect("/");
+  }
+}
+
 module.exports = {
   index,
   new: newPage,
   create,
   show,
   delete: deleteRun,
+  edit,
+  update,
 };

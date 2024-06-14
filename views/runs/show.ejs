@@ -12,6 +12,7 @@
     <p>Time: <%= run.time %></p>
     <p>Date: <%= run.date %></p>
     <form action="/runs/<%= run._id %>?_method=DELETE" method="POST">
+      <a href="/runs/<%= run._id %>/edit">Edit</a>
       <button type="submit">Delete run</button>
     </form>
   </body>
