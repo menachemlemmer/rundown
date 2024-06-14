@@ -8,23 +8,27 @@
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>sign up</h1>
-    <% if (error) {%>
-    <p><%= error %></p>
-    <% } %>
-    <form action="/auth/sign-up" method="POST">
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="username" required />
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" required />
-      <label for="confirmPassword">Confirm Password:</label>
-      <input
-        type="password"
-        name="confirmPassword"
-        id="confirmPassword"
-        required
-      />
-      <button type="submit">Sign up</button>
-    </form>
+    <div class="sign-up-container">
+      <div class="glass sign-up">
+        <h1>sign up</h1>
+        <% if (error) {%>
+        <p class="red"><%= error %></p>
+        <% } %>
+        <form action="/auth/sign-up" method="POST">
+          <label for="username">Username:</label>
+          <input type="text" name="username" id="username" required />
+          <label for="password">Password:</label>
+          <input type="password" name="password" id="password" required />
+          <label for="confirmPassword">Confirm Password:</label>
+          <input
+            type="password"
+            name="confirmPassword"
+            id="confirmPassword"
+            required
+          />
+          <button type="submit">Sign up</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

@@ -4,8 +4,7 @@ async function index(req, res) {
   const currentUser = await User.findById(req.session.user._id);
   const runs = currentUser.runs;
   const sortedRuns = runs.sort((a, b) => b.date - a.date);
-  const message = req.flash("success");
-  res.render("runs/index.ejs", { sortedRuns, message });
+  res.render("runs/index.ejs", { sortedRuns });
 }
 
 async function newPage(req, res) {

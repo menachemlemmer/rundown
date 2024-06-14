@@ -44,7 +44,6 @@ async function signUp(req, res) {
     console.log(req.session.user);
 
     req.session.save(() => {
-      req.flash("success", `Welcome, ${user.username}! Sign up successful`);
       res.redirect("/runs");
     });
   } catch (error) {
@@ -76,7 +75,6 @@ async function signIn(req, res) {
     };
 
     req.session.save(() => {
-      req.flash("success", "Sign in successful.");
       res.redirect("/runs");
     });
   } catch (error) {
