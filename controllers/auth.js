@@ -3,11 +3,13 @@ const bcrypt = require("bcrypt");
 const User = require("../models/user.js");
 
 function getSignUp(req, res) {
-  res.render("auth/sign-up.ejs");
+  const error = req.flash("error");
+  res.render("auth/sign-up.ejs", { error });
 }
 
 function getSignIn(req, res) {
-  res.render("auth/sign-in.ejs");
+  const error = req.flash("error");
+  res.render("auth/sign-in.ejs", { error });
 }
 
 function signOut(req, res) {
@@ -20,24 +22,30 @@ async function signUp(req, res) {
   try {
     const userInDatabase = await User.findOne({ username: req.body.username });
     if (userInDatabase) {
-      return res.send("Username already taken.");
+      req.flash("error", "Username already exists. Please try again.");
+      return res.redirect("/auth/sign-up");
     }
 
     if (req.body.password !== req.body.confirmPassword) {
-      return res.send("Password and Confirm Password must match");
+      req.flash("error", "Passwords do not match. Please try again.");
+      return res.redirect("/auth/sign-up");
     }
 
     const hashedPassword = bcrypt.hashSync(req.body.password, 10);
     req.body.password = hashedPassword;
 
-    await User.create(req.body);
+    const user = await User.create(req.body);
 
     req.session.user = {
       username: user.username,
+      _id: user._id,
     };
 
+    console.log(req.session.user);
+
     req.session.save(() => {
-      res.redirect("/");
+      req.flash("success", `Welcome, ${user.username}! Sign up successful`);
+      res.redirect("/runs");
     });
   } catch (error) {
     console.log(error);
@@ -49,7 +57,8 @@ async function signIn(req, res) {
   try {
     const userInDatabase = await User.findOne({ username: req.body.username });
     if (!userInDatabase) {
-      return res.send("Login failed. Please try again.");
+      req.flash("error", "Login failed. Please try again.");
+      return res.redirect("/auth/sign-in");
     }
 
     const validPassword = bcrypt.compareSync(
@@ -57,7 +66,8 @@ async function signIn(req, res) {
       userInDatabase.password
     );
     if (!validPassword) {
-      return res.send("Login failed. Please try again.");
+      req.flash("error", "Login failed. Please try again.");
+      return res.redirect("/auth/sign-in");
     }
 
     req.session.user = {
@@ -66,7 +76,8 @@ async function signIn(req, res) {
     };
 
     req.session.save(() => {
-      res.redirect("/");
+      req.flash("success", "Sign in successful.");
+      res.redirect("/runs");
     });
   } catch (error) {
     console.log(error);

@@ -4,12 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Runs</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Runs</h1>
+    <% if (message) {%>
+    <p><%= message %></p>
+    <% } %>
     <ul>
-      <% runs.forEach((run) => { %>
+      <% sortedRuns.forEach((run) => { %>
       <a href="/runs/<%= run._id %>">
         <li><%= run.title %></li>
       </a>

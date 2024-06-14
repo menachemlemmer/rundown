@@ -3,8 +3,9 @@ const User = require("../models/user");
 async function index(req, res) {
   const currentUser = await User.findById(req.session.user._id);
   const runs = currentUser.runs;
-  console.log(runs);
-  res.render("runs/index.ejs", { runs });
+  const sortedRuns = runs.sort((a, b) => b.date - a.date);
+  const message = req.flash("success");
+  res.render("runs/index.ejs", { sortedRuns, message });
 }
 
 async function newPage(req, res) {

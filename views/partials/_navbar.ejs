@@ -1,9 +1,12 @@
-<nav>
-  <% if (!user) {%>
-  <a href="/auth/sign-up">Sign Up</a>
-  <a href="/auth/sign-in">Sign In</a>
-  <% } else { %>
-  <a href="/auth/sign-out">Sign Out</a>
-  <a href="/runs">Profile</a>
-  <% } %>
-</nav>
+<div class="header">
+  <h1>RunDown</h1>
+  <nav>
+    <% if (!user) {%>
+    <a href="/auth/sign-up">Sign Up</a>
+    <a href="/auth/sign-in">Sign In</a>
+    <% } else { %>
+    <a href="/auth/sign-out">Sign Out</a>
+    <a href="/runs">Home</a>
+    <% } %>
+  </nav>
+</div>
