@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= run.title %></title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1><%= run.title %></h1>
+    <p>Distance: <%= run.distance %> mi.</p>
+    <p>Time: <%= run.time %></p>
+    <p>Date: <%= run.date %></p>
+    <form action="/runs/<%= run._id %>?_method=DELETE" method="POST">
+      <button type="submit">Delete run</button>
+    </form>
+  </body>
+</html>

@@ -6,7 +6,15 @@
     <title>Runs</title>
   </head>
   <body>
+    <%- include('../partials/_navbar.ejs') %>
     <h1>Runs</h1>
+    <ul>
+      <% runs.forEach((run) => { %>
+      <a href="/runs/<%= run._id %>">
+        <li><%= run.title %></li>
+      </a>
+      <% }) %>
+    </ul>
     <a href="/runs/new">Add new</a>
   </body>
 </html>

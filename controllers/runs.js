@@ -1,7 +1,10 @@
 const User = require("../models/user");
 
 async function index(req, res) {
-  res.render("runs/index.ejs");
+  const currentUser = await User.findById(req.session.user._id);
+  const runs = currentUser.runs;
+  console.log(runs);
+  res.render("runs/index.ejs", { runs });
 }
 
 async function newPage(req, res) {
@@ -25,8 +28,33 @@ async function create(req, res) {
   }
 }
 
+async function show(req, res) {
+  try {
+    const currentUser = await User.findById(req.session.user._id);
+    const run = currentUser.runs.id(req.params.runId);
+    res.render("runs/show.ejs", { run });
+  } catch (error) {
+    console.log(error);
+    res.redirect("/");
+  }
+}
+
+async function deleteRun(req, res) {
+  try {
+    const currentUser = await User.findById(req.session.user._id);
+    currentUser.runs.id(req.params.runId).deleteOne();
+    await currentUser.save();
+    res.redirect("/runs");
+  } catch (error) {
+    console.log(error);
+    res.redirect("/");
+  }
+}
+
 module.exports = {
   index,
   new: newPage,
   create,
+  show,
+  delete: deleteRun,
 };

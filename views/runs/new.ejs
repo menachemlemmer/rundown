@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>New</title>
+    <script src="https://cdn.jsdelivr.net/npm/html-duration-picker@latest/dist/html-duration-picker.min.js"></script>
+</body>
   </head>
   <body>
     <%- include('../partials/_navbar') %>
@@ -14,7 +16,13 @@
       <label for="distance">Distance in miles</label>
       <input type="number" name="distance" id="distance" step="0.01" required />
       <label for="time">Duration</label>
-      <input type="number" name="time" id="time" required />
+      <input
+        type="text"
+        name="time"
+        id="time"
+        class="html-duration-picker"
+        required
+      />
       <label for="date">Date</label>
       <input type="datetime-local" name="date" id="date" required />
       <button type="submit">Submit</button>
