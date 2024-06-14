@@ -1,6 +1,25 @@
 const mongoose = require("mongoose");
 
-const userSchema = mongoose.Schema({
+const runSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+  },
+  distance: {
+    type: Number,
+    required: true,
+  },
+  time: {
+    type: Number,
+    required: true,
+  },
+  date: {
+    type: Date,
+    required: true,
+  },
+});
+
+const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
@@ -9,6 +28,7 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  runs: [runSchema],
 });
 
 const User = mongoose.model("User", userSchema);

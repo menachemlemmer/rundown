@@ -32,7 +32,13 @@ async function signUp(req, res) {
 
     await User.create(req.body);
 
-    res.redirect("/auth/sign-in");
+    req.session.user = {
+      username: user.username,
+    };
+
+    req.session.save(() => {
+      res.redirect("/");
+    });
   } catch (error) {
     console.log(error);
     res.redirect("/");
