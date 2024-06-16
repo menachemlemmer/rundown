@@ -8,24 +8,39 @@
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
-    <div class="sign-up-container">
-      <div class="glass sign-up">
+    <div class="body-container">
+      <div class="glass form">
         <h1>sign up</h1>
         <% if (error) {%>
         <p class="red"><%= error %></p>
         <% } %>
-        <form action="/auth/sign-up" method="POST">
-          <label for="username">Username:</label>
-          <input type="text" name="username" id="username" required />
-          <label for="password">Password:</label>
-          <input type="password" name="password" id="password" required />
-          <label for="confirmPassword">Confirm Password:</label>
-          <input
-            type="password"
-            name="confirmPassword"
-            id="confirmPassword"
-            required
-          />
+        <form action="/auth/sign-up" method="POST" class="form">
+          <div>
+            <label for="username">Username:</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              minlength="2"
+              maxlength="20"
+              required
+            />
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required />
+          </div>
+          <div>
+            <label for="confirmPassword">Confirm Password:</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
+              minlength="3"
+              maxlength="20"
+              required
+            />
+          </div>
           <button type="submit">Sign up</button>
         </form>
       </div>

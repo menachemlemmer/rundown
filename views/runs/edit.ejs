@@ -11,10 +11,10 @@
   <body>
     <%- include('../partials/_navbar') %>
 
-    <div class="edit-container">
-      <div class="glass edit">
+    <div class="body-container">
+      <div class="glass form">
         <h1>Edit <%= run.title %></h1>
-        <form action="/runs/<%= run._id %>?_method=PUT" method="POST">
+        <form action="/runs/<%= run._id %>?_method=PUT" method="POST" class="form">
           <div>
             <label for="title">Title</label>
             <input type="text" name="title" id="title" value="<%= run.title %>" required />

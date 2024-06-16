@@ -40,12 +40,18 @@
             </svg>
           </a>
         </div>
-        <% sortedRuns.forEach((run) => { %>
+        <% if (sortedRuns.length === 0) {%>
+        <a href="#"><p>No runs added yet</p></a>
+        <% } %> <% sortedRuns.forEach((run) => { %>
         <a class="glass" href="/runs/<%= run._id %>"
           ><p><%= run.title %></p>
           <p><%= run.distance %> mi.</p>
         </a>
         <% }) %>
+      </div>
+      <div class="dashboard">
+        <div class="dash-header"><h1 class="big">Dashboard</h1></div>
+        <div class="glass weather"></div>
       </div>
     </div>
   </body>

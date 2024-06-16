@@ -5,28 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>New</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/html-duration-picker@latest/dist/html-duration-picker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html-duration-picker@latest/dist/html-duration-picker.min.js" ></script>
 </body>
   </head>
   <body>
     <%- include('../partials/_navbar') %>
-    <h1>Add a new run</h1>
-    <form action="/runs" method="POST">
-      <label for="title">Title</label>
-      <input type="text" name="title" id="title" required />
-      <label for="distance">Distance in miles</label>
-      <input type="number" name="distance" id="distance" step="0.01" required />
-      <label for="time">Duration</label>
-      <input
-        type="text"
-        name="time"
-        id="time"
-        class="html-duration-picker"
-        required
-      />
-      <label for="date">Date</label>
-      <input type="datetime-local" name="date" id="date" required />
-      <button type="submit">Submit</button>
-    </form>
+    <div class="body-container">
+      <div class="glass form">
+        <h1>Add a new run</h1>
+        <form action="/runs" method="POST" class="form">
+          <div>
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" required />
+          </div>
+          <div>
+            <label for="distance">Distance in miles</label>
+            <input type="number" name="distance" id="distance" step="0.01" required />
+          </div>
+          <div>
+            <label for="time">Duration</label>
+            <input
+              type="text"
+              name="time"
+              id="time"
+              class="html-duration-picker"
+              required
+            />
+          </div>
+          <div>
+            <label for="date">Date</label>
+            <input type="datetime-local" name="date" id="date" required />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

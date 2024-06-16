@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const fetch = require("node-fetch");
 
 async function index(req, res) {
   const currentUser = await User.findById(req.session.user._id);
@@ -19,6 +20,13 @@ async function newPage(req, res) {
 async function create(req, res) {
   try {
     const currentUser = await User.findById(req.session.user._id);
+    const time = req.body.time.split(":");
+    const distance = req.body.distance;
+    const speed =
+      (Number(time[0]) * 60 * 60 + Number(time[1]) * 60 + Number(time[2])) /
+      60 /
+      distance;
+    req.body.speed = String(speed).slice(0, 4);
     currentUser.runs.push(req.body);
     await currentUser.save();
     res.redirect("/runs");
@@ -67,6 +75,13 @@ async function update(req, res) {
   try {
     const currentUser = await User.findById(req.session.user._id);
     const run = currentUser.runs.id(req.params.runId);
+    const time = req.body.time.split(":");
+    const distance = req.body.distance;
+    const speed =
+      (Number(time[0]) * 60 * 60 + Number(time[1]) * 60 + Number(time[2])) /
+      60 /
+      distance;
+    req.body.speed = String(speed).slice(0, 4);
     run.set(req.body);
     await currentUser.save();
     res.redirect("/runs");

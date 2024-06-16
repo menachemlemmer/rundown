@@ -8,13 +8,13 @@
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
-    <div class="sign-in-container">
-      <div class="glass sign-in">
+    <div class="body-container">
+      <div class="glass form">
         <h1>sign in</h1>
         <% if (error) {%>
         <p class="red"><%= error %></p>
         <% } %>
-        <form action="/auth/sign-in" method="POST" class="sign-in">
+        <form action="/auth/sign-in" method="POST" class="form">
           <div>
             <label for="username">Username:</label>
             <input type="text" name="username" id="username" required />

@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -22,20 +23,39 @@ nav {
   gap: 2rem;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
 input {
+  margin: 0.5rem 0.5rem 2rem 0rem;
   width: 25rem;
-  height: 4rem;
+  height: 2.7rem;
   padding: 0.5rem;
-  border-radius: 5px;
   border: none;
   border-bottom: 2px solid #1a2c31;
   background: none;
+  transition: 0.3s;
+}
+
+.html-duration-picker-input-controls-wrapper {
+  margin: 0.5rem 0.5rem 2rem 0rem;
+  width: 25rem;
+  height: 2.7rem;
+  padding: 0.5rem;
+  border: none;
+  border-bottom: 2px solid #1a2c31;
+  background: none;
+  transition: 0.3s;
+}
+
+.scroll-btn[aria-label="Increase duration"] {
+  top: -1.5rem !important;
+}
+
+.scroll-btn[aria-label="Decrease duration"] {
+  top: -0.5rem !important;
+}
+
+input:focus {
+  outline: none;
+  margin-top: 1rem;
 }
 
 button {
@@ -47,7 +67,7 @@ button {
   color: #1a2c31;
   font-size: 1.2rem;
   cursor: pointer;
-  margin-top: 40px;
+  margin-top: 30px;
   align-self: center;
   transition: 0.3s;
 }
@@ -55,6 +75,10 @@ button {
 button:hover {
   background: #1a2c31;
   color: #f5f5f5;
+}
+
+a {
+  text-align: center;
 }
 
 .orange {
@@ -73,6 +97,7 @@ button:hover {
   background: rgba(255, 255, 255, 0.33);
   backdrop-filter: blur(6.9px);
   -webkit-backdrop-filter: blur(6.9px);
+  border-radius: 10px;
 }
 
 .header {
@@ -85,6 +110,7 @@ button:hover {
   align-items: center;
   padding: 1.3rem 4rem;
   height: 7rem;
+  border-radius: 0;
 }
 
 .header a {
@@ -132,9 +158,7 @@ button:hover {
   font-family: "Roboto", sans-serif;
 }
 
-.sign-in-container,
-.sign-up-container,
-.edit-container {
+.body-container {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -143,23 +167,23 @@ button:hover {
   justify-content: center;
 }
 
-.sign-in,
-.sign-up,
-.edit {
-  padding: 2rem;
-  height: 70%;
+.form {
+  padding: 2.5rem;
+  height: auto;
+  min-height: auto;
   width: 25%;
+  min-width: 450px;
   border-radius: 10px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   color: #1a2c31;
 }
 
 .index-container {
   display: flex;
-  padding: 8rem 5rem;
+  padding: 8rem 5rem 2rem 5rem;
   width: 100%;
   height: 100%;
 }
@@ -169,10 +193,12 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: baseline;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 2rem;
-  width: 40%;
-  overflow: auto;
+  width: 50%;
+  height: 100%;
+  max-height: 100%;
+  overflow-y: scroll;
 }
 
 .run-container a {
@@ -180,7 +206,7 @@ button:hover {
   color: #f5f5f5;
   padding: 12px;
   border-radius: 10px;
-  width: 60%;
+  width: 80%;
   height: 3.5rem;
   display: flex;
   align-items: center;
@@ -188,7 +214,7 @@ button:hover {
 }
 
 .head {
-  width: 60%;
+  width: 80%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -202,4 +228,57 @@ button:hover {
 
 .head svg:hover {
   height: 32px;
+}
+
+.show {
+  padding: 2rem;
+  height: 70%;
+  width: 25%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 3rem;
+  color: #1a2c31;
+}
+
+.show a {
+  color: #f5f5f5;
+  text-decoration: none;
+  font-size: large;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto 1fr 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+  height: 100%;
+  margin-left: 50px;
+}
+
+.dash-header {
+  grid-column: 1/4;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.33);
+  backdrop-filter: blur(6.9px);
+  -webkit-backdrop-filter: blur(6.9px);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(83, 81, 81, 0.8);
+  -webkit-box-shadow: inset 0 0 6px rgba(51, 50, 50, 0.5);
 }

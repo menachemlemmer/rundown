@@ -17,15 +17,21 @@ const runSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  speed: {
+    type: Number,
+  },
 });
 
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
+    minLength: 3,
+    maxLength: 20,
     required: true,
   },
   password: {
     type: String,
+    minLength: 3,
     required: true,
   },
   runs: [runSchema],

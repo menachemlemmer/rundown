@@ -8,13 +8,22 @@
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1><%= run.title %></h1>
-    <p>Distance: <%= run.distance %> mi.</p>
-    <p>Time: <%= run.time %></p>
-    <p>Date: <%= run.date %></p>
-    <form action="/runs/<%= run._id %>?_method=DELETE" method="POST">
-      <a href="/runs/<%= run._id %>/edit">Edit</a>
-      <button type="submit">Delete run</button>
-    </form>
+    <div class="body-container">
+      <div class="glass show">
+        <h1><%= run.title %></h1>
+        <p>Distance: <%= run.distance %> mi.</p>
+        <p>Time: <%= run.time %></p>
+        <p>Speed: <%= run.speed %> miles per minute</p>
+        <p>Date: <%= run.date %></p>
+        <form
+          action="/runs/<%= run._id %>?_method=DELETE"
+          method="POST"
+          class="show"
+        >
+          <a href="/runs/<%= run._id %>/edit">Edit Run</a>
+          <button type="submit">Delete run</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
