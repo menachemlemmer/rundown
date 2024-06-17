@@ -82,9 +82,8 @@ a {
 }
 
 progress {
-  width: 50%;
+  width: 65%;
   height: 2rem;
-  margin-top: 1rem;
   -webkit-appearance: none;
 }
 
@@ -200,7 +199,7 @@ progress::-webkit-progress-value {
 
 .index-container {
   display: flex;
-  padding: 8rem 5rem 2rem 5rem;
+  padding: 6rem 5rem 4rem 5rem;
   width: 100%;
   height: 100%;
 }
@@ -236,6 +235,7 @@ progress::-webkit-progress-value {
   justify-content: space-between;
   align-items: center;
   text-align: right;
+  margin-bottom: 2rem;
 }
 
 .head a {
@@ -362,6 +362,25 @@ progress::-webkit-progress-value {
   padding: 1.5rem;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   font-size: 20px;
+}
+
+.progress-wrapper {
+  height: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 25px;
+  gap: 1rem;
+}
+
+.progress-container {
+  height: 100%;
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
 }

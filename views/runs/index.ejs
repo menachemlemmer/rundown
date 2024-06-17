@@ -79,7 +79,25 @@
           <p class="very-big orange"><%= totalDistance %></p>
         </div>
         <div class="daily-goal glass">
-          <progress max="100" value="<%= goalProgress %>"></progress>
+          <p>Daily Goal</p>
+          <div class="progress-container">
+            <% if (goalProgress <= 50) {%>
+            <p class="big">Keep going!</p>
+            <% } else if (goalProgress < 100) {%>
+            <p class="big">Almost there!</p>
+            <% } else {%>
+            <p class="big">Goal reached!</p>
+            <% } %>
+            <div class="progress-wrapper">
+              <p>
+                <% if (String(goalProgress).split(".")[0].length < 3) {%> <%=
+                String(goalProgress).slice(0, 4)%> <% } else {%> <%=
+                String(goalProgress).slice(0, 5) %> <% }%>%
+              </p>
+              <progress max="100" value="<%= goalProgress %>"></progress>
+              <p><%= dailyGoal %> mi.</p>
+            </div>
+          </div>
         </div>
         <div class="average-daily-distance glass">
           <div>Average Daily Distance</div>

@@ -45,8 +45,8 @@ async function index(req, res) {
     weeklyRuns.length;
 
   const avgDailyDistance = totalDistance / runs.length;
-
-  const goalProgress = (todayDistance / currentUser.dailyGoal) * 100;
+  const dailyGoal = currentUser.dailyGoal;
+  const goalProgress = (todayDistance / dailyGoal) * 100;
 
   res.render("runs/index.ejs", {
     sortedRuns,
@@ -55,6 +55,7 @@ async function index(req, res) {
     totalDistance,
     weeklyAvgSpeed,
     avgDailyDistance,
+    dailyGoal,
     goalProgress,
   });
 }
