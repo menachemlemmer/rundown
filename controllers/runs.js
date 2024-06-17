@@ -77,8 +77,7 @@ async function create(req, res) {
       60 /
       distance;
     req.body.speed = String(speed).slice(0, 4);
-    req.body.location = 11204;
-    req.body.dailyGoal = 5;
+    console.log(req.body);
     currentUser.runs.push(req.body);
     await currentUser.save();
     res.redirect("/runs");

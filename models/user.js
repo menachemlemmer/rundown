@@ -37,9 +37,11 @@ const userSchema = new mongoose.Schema({
   location: {
     type: String,
     length: 5,
+    default: "11204",
   },
   dailyGoal: {
     type: Number,
+    default: 5,
   },
   runs: [runSchema],
 });

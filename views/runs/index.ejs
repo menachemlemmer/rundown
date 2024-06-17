@@ -72,7 +72,10 @@
         </div>
         <div class="average-speed glass">
           <div>Average Speed</div>
-          <p class="very-big orange"><%= String(avgSpeed).slice(0, 4) %></p>
+          <p class="very-big orange">
+            <% if (avgSpeed) {%><%= String(avgSpeed).slice(0, 4) %><% } else {%>
+            <%= 0 %> <% } %>
+          </p>
         </div>
         <div class="total-distance glass">
           <div>Total Distance</div>
@@ -102,13 +105,15 @@
         <div class="average-daily-distance glass">
           <div>Average Daily Distance</div>
           <p class="very-big orange">
-            <%= String(avgDailyDistance).slice(0, 4) %>
+            <% if (avgDailyDistance) {%> <%= String(avgDailyDistance).slice(0,
+            4) %> <% } else {%> <%= 0 %> <% } %>
           </p>
         </div>
         <div class="weekly-average glass">
           <div>Weekly Average Speed</div>
           <p class="very-big orange">
-            <%= String(weeklyAvgSpeed).slice(0, 4) %>
+            <% if (weeklyAvgSpeed) {%> <%= String(weeklyAvgSpeed).slice(0, 4) %>
+            <% } else {%> <%= 0 %> <% } %>
           </p>
         </div>
       </div>
