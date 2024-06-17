@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   location: {
-    type: Number,
+    type: String,
     length: 5,
   },
   dailyGoal: {

@@ -14,6 +14,7 @@ const passUserToView = require("./middleware/pass-user-to-view.js");
 const authRouter = require("./routes/auth.js");
 const runRouter = require("./routes/runs.js");
 const settingRouter = require("./routes/settings.js");
+const leaderBoardRouter = require("./routes/leaderboard.js");
 
 const port = process.env.PORT ? process.env.PORT : "3000";
 
@@ -51,6 +52,7 @@ app.get("/", (req, res) => {
 app.use("/auth", authRouter);
 app.use("/runs", isSignedIn, runRouter);
 app.use("/settings", isSignedIn, settingRouter);
+app.use("/leaderboard", isSignedIn, leaderBoardRouter);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

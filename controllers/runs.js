@@ -17,10 +17,8 @@ async function index(req, res) {
   const currentUser = await User.findById(req.session.user._id);
   const runs = currentUser.runs;
   const sortedRuns = runs.sort((a, b) => b.date - a.date);
-  const weatherData = await getWeather(
-    "11209",
-    process.env.OPENWEATHER_API_KEY
-  );
+  const zip = currentUser.location;
+  const weatherData = await getWeather(zip, process.env.OPENWEATHER_API_KEY);
   const avgSpeed =
     runs.reduce((acc, run) => acc + Number(run.speed), 0) / runs.length;
 
@@ -146,6 +144,7 @@ async function update(req, res) {
 }
 
 module.exports = {
+  getWeather,
   index,
   new: newPage,
   create,

@@ -11,6 +11,9 @@
     <%- include('../partials/_navbar.ejs') %>
     <div class="body-container">
       <div class="glass form">
+        <% if (error) { %>
+        <p class="red"><%= error %></p>
+        <% } %>
         <h1>Settings</h1>
         <form action="/settings?_method=PUT" method="POST" class="form">
           <div>
@@ -26,9 +29,10 @@
           <div>
             <label for="location">Zip-code (for weather location):</label>
             <input
-              type="number"
+              type="text"
               name="location"
               id="location"
+              pattern="[0-9]{5}"
               value="<%= location %>"
               required
             />

@@ -49,7 +49,7 @@
         <% if (sortedRuns.length === 0) {%>
         <a href="#"><p>No runs added yet</p></a>
         <% } %> <% sortedRuns.forEach((run) => { %>
-        <a class="glass" href="/runs/<%= run._id %>"
+        <a class="glass run" href="/runs/<%= run._id %>"
           ><p><%= run.title %></p>
           <p><%= run.distance %> mi.</p>
         </a>
