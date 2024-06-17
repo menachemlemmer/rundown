@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Runs</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png?" />
     <link
       href="https://websygen.github.io/owfont/css/owfont-regular.css"
       rel="stylesheet"
@@ -77,7 +78,21 @@
           <div>Total Distance</div>
           <p class="very-big orange"><%= totalDistance %></p>
         </div>
-        <div class="daily-goal glass"></div>
+        <div class="daily-goal glass">
+          <progress max="100" value="<%= dailyPercent %>"></progress>
+        </div>
+        <div class="average-daily-distance glass">
+          <div>Average Daily Distance</div>
+          <p class="very-big orange">
+            <%= String(avgDailyDistance).slice(0, 4) %>
+          </p>
+        </div>
+        <div class="weekly-average glass">
+          <div>Weekly Average Speed</div>
+          <p class="very-big orange">
+            <%= String(weeklyAvgSpeed).slice(0, 4) %>
+          </p>
+        </div>
       </div>
     </div>
   </body>

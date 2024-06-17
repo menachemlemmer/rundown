@@ -25,11 +25,38 @@ async function index(req, res) {
     runs.reduce((acc, run) => acc + Number(run.speed), 0) / runs.length;
 
   const totalDistance = runs.reduce((acc, run) => acc + run.distance, 0);
+  const today = new Date();
+  const todayDate = today.toISOString().split("T")[0];
+  const todayRuns = runs.filter(
+    (run) => run.date.toISOString().split("T")[0] === todayDate
+  );
+  const todayDistance = todayRuns.reduce((acc, run) => acc + run.distance, 0);
+  const weeklyRuns = runs.filter((run) => {
+    const runDate = run.date.toISOString().split("T")[0];
+    const today = new Date();
+    const todayDate = today.toISOString().split("T")[0];
+    return (
+      new Date(runDate).getTime() > today.getTime() - 7 * 24 * 60 * 60 * 1000
+    );
+  });
+
+  const weeklyAvgSpeed =
+    weeklyRuns.reduce((acc, run) => acc + Number(run.speed), 0) /
+    weeklyRuns.length;
+
+  const avgDailyDistance = totalDistance / runs.length;
+
+  const dailyGoal = currentUser.settings[0].dailyGoal;
+  const dailyPercent = (todayDistance / dailyGoal) * 100;
+
   res.render("runs/index.ejs", {
     sortedRuns,
     weatherData,
     avgSpeed,
     totalDistance,
+    weeklyAvgSpeed,
+    avgDailyDistance,
+    dailyPercent,
   });
 }
 

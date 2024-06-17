@@ -3,30 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign In</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="shortcut icon" type="image/png" href="/images/favicon.png?" />
+    <title>Settings</title>
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
     <div class="body-container">
       <div class="glass form">
-        <h1>sign in</h1>
-        <% if (error) {%>
-        <p class="red"><%= error %></p>
-        <% } %>
-        <form action="/auth/sign-in" method="POST" class="form">
+        <h1>Settings</h1>
+        <form action="/settings" method="POST" class="form">
           <div>
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username" required />
+            <label for="daily-goal">Set Daily Goal in miles:</label>
+            <input type="text" name="dailyGoal" id="daily-goal"/>
           </div>
           <div>
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" required />
+            <label for="location">Zip-code (for weather location):</label>
+            <input type="number" name="location" id="location" />
           </div>
-          <button type="submit">Sign in</button>
+          <button type="submit">Apply</button>
         </form>
       </div>
     </div>
   </body>
+</html>
 </html>

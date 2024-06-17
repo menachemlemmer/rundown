@@ -22,6 +22,15 @@ const runSchema = new mongoose.Schema({
   },
 });
 
+const settingsSchema = new mongoose.Schema({
+  location: {
+    type: Number,
+  },
+  dailyGoal: {
+    type: Number,
+  },
+});
+
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -35,6 +44,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   runs: [runSchema],
+  settings: [settingsSchema],
 });
 
 const User = mongoose.model("User", userSchema);
