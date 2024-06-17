@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Runs</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      href="https://websygen.github.io/owfont/css/owfont-regular.css"
+      rel="stylesheet"
+      type="text/css"
+    />
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
@@ -51,7 +56,28 @@
       </div>
       <div class="dashboard">
         <div class="dash-header"><h1 class="big">Dashboard</h1></div>
-        <div class="glass weather"></div>
+        <div class="glass weather">
+          <i class="owf owf-<%= weatherData.weather[0].id %>"></i>
+          <div class="temp-container">
+            <h2 class="temp orange">
+              <%= String(weatherData.main.temp).slice(0, 4) %>
+            </h2>
+            <p class="orange small">°F</p>
+          </div>
+          <div class="weather-info">
+            <p class="big"><%= weatherData.weather[0].description %></p>
+            <p><%= weatherData.name %></p>
+          </div>
+        </div>
+        <div class="average-speed glass">
+          <div>Average Speed</div>
+          <p class="very-big orange"><%= String(avgSpeed).slice(0, 4) %></p>
+        </div>
+        <div class="total-distance glass">
+          <div>Total Distance</div>
+          <p class="very-big orange"><%= totalDistance %></p>
+        </div>
+        <div class="daily-goal glass"></div>
       </div>
     </div>
   </body>

@@ -1,11 +1,36 @@
 const User = require("../models/user");
 const fetch = require("node-fetch");
 
+async function getWeather(zip, key) {
+  try {
+    const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&units=imperial&appid=${key}`;
+    const response = await fetch(weatherUrl);
+    const weatherData = await response.json();
+    return weatherData;
+  } catch (error) {
+    console.log("Error fetching weather data:", error);
+    throw error;
+  }
+}
+
 async function index(req, res) {
   const currentUser = await User.findById(req.session.user._id);
   const runs = currentUser.runs;
   const sortedRuns = runs.sort((a, b) => b.date - a.date);
-  res.render("runs/index.ejs", { sortedRuns });
+  const weatherData = await getWeather(
+    "11209",
+    process.env.OPENWEATHER_API_KEY
+  );
+  const avgSpeed =
+    runs.reduce((acc, run) => acc + Number(run.speed), 0) / runs.length;
+
+  const totalDistance = runs.reduce((acc, run) => acc + run.distance, 0);
+  res.render("runs/index.ejs", {
+    sortedRuns,
+    weatherData,
+    avgSpeed,
+    totalDistance,
+  });
 }
 
 async function newPage(req, res) {

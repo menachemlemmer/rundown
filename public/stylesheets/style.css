@@ -282,3 +282,60 @@ a {
   background: rgba(83, 81, 81, 0.8);
   -webkit-box-shadow: inset 0 0 6px rgba(51, 50, 50, 0.5);
 }
+
+.weather {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem;
+  grid-column: 1/3;
+}
+
+.temp {
+  font-size: 130px;
+}
+
+.temp-container {
+  display: flex;
+  align-items: start;
+}
+
+.small {
+  position: relative;
+  top: 20px;
+}
+
+.owf {
+  height: 150px;
+  width: 150px;
+}
+
+.owf::before {
+  font-size: 150px;
+}
+
+.average-speed {
+  grid-column: 3/4;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 20px;
+}
+
+.very-big {
+  font-size: 130px;
+}
+
+.daily-goal {
+  grid-column: 2/4;
+}
+
+.total-distance {
+  grid-column: 1/2;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 20px;
+}
