@@ -41,8 +41,6 @@ async function signUp(req, res) {
       _id: user._id,
     };
 
-    console.log(req.session.user);
-
     req.session.save(() => {
       res.redirect("/runs");
     });

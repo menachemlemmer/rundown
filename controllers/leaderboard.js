@@ -31,7 +31,6 @@ async function index(req, res) {
   });
   const sortedDailyLeaderboard = dailyLeaderboard.sort((a, b) => b[1] - a[1]);
   const sortedWeeklyLeaderboard = weeklyLeaderboard.sort((a, b) => b[1] - a[1]);
-  console.log(sortedWeeklyLeaderboard);
   res.render("leaderboard/index.ejs", {
     sortedDailyLeaderboard,
     sortedWeeklyLeaderboard,
