@@ -1,13 +1,23 @@
+const User = require("../models/user");
 const user = require("../models/user");
 
-function index(req, res) {
-  res.render("settings/index.ejs");
+async function index(req, res) {
+  const currentUser = await User.findById(req.session.user._id);
+  const location = currentUser.location;
+  const dailyGoal = currentUser.dailyGoal;
+  res.render("settings/index.ejs", { location, dailyGoal });
 }
 
-async function create(req, res) {
+async function update(req, res) {
   try {
     const currentUser = await user.findById(req.session.user._id);
-    currentUser.settings.push(req.body);
+    console.log(req.body);
+    if (req.body.location) {
+      currentUser.location = req.body.location;
+    }
+    if (req.body.dailyGoal) {
+      currentUser.dailyGoal = req.body.dailyGoal;
+    }
     await currentUser.save();
     res.redirect("/runs");
   } catch (error) {
@@ -18,5 +28,5 @@ async function create(req, res) {
 
 module.exports = {
   index,
-  create,
+  update,
 };

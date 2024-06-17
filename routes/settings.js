@@ -4,6 +4,6 @@ const settingCtrl = require("../controllers/settings");
 
 router.get("/", settingCtrl.index);
 
-router.post("/", settingCtrl.create);
+router.put("/", settingCtrl.update);
 
 module.exports = router;

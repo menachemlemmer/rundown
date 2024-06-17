@@ -46,8 +46,7 @@ async function index(req, res) {
 
   const avgDailyDistance = totalDistance / runs.length;
 
-  const dailyGoal = currentUser.settings[0].dailyGoal;
-  const dailyPercent = (todayDistance / dailyGoal) * 100;
+  const goalProgress = (todayDistance / currentUser.dailyGoal) * 100;
 
   res.render("runs/index.ejs", {
     sortedRuns,
@@ -56,7 +55,7 @@ async function index(req, res) {
     totalDistance,
     weeklyAvgSpeed,
     avgDailyDistance,
-    dailyPercent,
+    goalProgress,
   });
 }
 
@@ -79,6 +78,8 @@ async function create(req, res) {
       60 /
       distance;
     req.body.speed = String(speed).slice(0, 4);
+    req.body.location = 11204;
+    req.body.dailyGoal = 5;
     currentUser.runs.push(req.body);
     await currentUser.save();
     res.redirect("/runs");

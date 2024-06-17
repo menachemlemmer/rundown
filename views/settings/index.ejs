@@ -12,19 +12,30 @@
     <div class="body-container">
       <div class="glass form">
         <h1>Settings</h1>
-        <form action="/settings" method="POST" class="form">
+        <form action="/settings?_method=PUT" method="POST" class="form">
           <div>
             <label for="daily-goal">Set Daily Goal in miles:</label>
-            <input type="text" name="dailyGoal" id="daily-goal"/>
+            <input
+              type="number"
+              name="dailyGoal"
+              id="daily-goal"
+              value="<%= dailyGoal %>"
+              required
+            />
           </div>
           <div>
             <label for="location">Zip-code (for weather location):</label>
-            <input type="number" name="location" id="location" />
+            <input
+              type="number"
+              name="location"
+              id="location"
+              value="<%= location %>"
+              required
+            />
           </div>
           <button type="submit">Apply</button>
         </form>
       </div>
     </div>
   </body>
-</html>
 </html>
