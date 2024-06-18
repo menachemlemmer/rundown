@@ -10,7 +10,10 @@
   <body class="index">
     <%- include('./partials/_navbar.ejs') %>
     <div class="welcome-container">
-      <h1 class="welcome">Welcome to Run<span class="orange">Down</span></h1>
+      <h1 class="welcome">
+        Welcome to Run<span class="orange">Down</span><% if (user) {%>, <%=
+        user.username %> <% } %>
+      </h1>
     </div>
   </body>
 </html>
