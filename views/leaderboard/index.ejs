@@ -15,7 +15,7 @@
         <% for (let user of sortedDailyLeaderboard) {%>
         <a class="glass" href="#">
           <p><%= user[0] %></p>
-          <p><%= String(user[1]).slice(0, 4) %></p>
+          <p><%= String(user[1]).slice(0, 4) %> mi.</p>
         </a>
         <% } %>
       </div>
@@ -24,7 +24,7 @@
         <% for (let user of sortedWeeklyLeaderboard) {%>
         <a class="glass" href="#">
           <p><%= user[0] %></p>
-          <p><%= String(user[1]).slice(0, 4) %></p>
+          <p><%= String(user[1]).slice(0, 4) %> mi.</p>
         </a>
         <% } %>
       </div>
