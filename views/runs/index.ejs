@@ -79,7 +79,9 @@
         </div>
         <div class="total-distance glass">
           <div>Total Distance</div>
-          <p class="very-big orange"><%= totalDistance %></p>
+          <p class="very-big orange">
+            <%= String(totalDistance).slice(0, 4) %>
+          </p>
         </div>
         <div class="daily-goal glass">
           <p>Daily Goal</p>
