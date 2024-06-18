@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign In</title>
+    <title>Leaderboard</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="shortcut icon" type="image/png" href="/images/favicon.png?" />
   </head>
@@ -15,7 +15,7 @@
         <% for (let user of sortedDailyLeaderboard) {%>
         <a class="glass" href="#">
           <p><%= user[0] %></p>
-          <p><%= user[1] %></p>
+          <p><%= String(user[1]).slice(0, 4) %></p>
         </a>
         <% } %>
       </div>
@@ -24,7 +24,7 @@
         <% for (let user of sortedWeeklyLeaderboard) {%>
         <a class="glass" href="#">
           <p><%= user[0] %></p>
-          <p><%= user[1] %></p>
+          <p><%= String(user[1]).slice(0, 4) %></p>
         </a>
         <% } %>
       </div>
